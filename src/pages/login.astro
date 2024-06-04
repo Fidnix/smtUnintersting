@@ -1,0 +1,107 @@
+---
+import PasswordInput from "../Components/PasswordInput";
+import "bootstrap/dist/css/bootstrap.css";
+import { verificar_autenticacion } from "../utils/auth";
+import LoginLayout from "../Layouts/LoginLayout.astro";
+
+if (verificar_autenticacion()) {
+  return Astro.redirect("/simulador");
+}
+---
+
+<LoginLayout>
+  <form action="/login" method="post">
+    <h1>Iniciar sesión</h1>
+    <hr class="form--hr" />
+    <div class="form--data__input">
+      <label for="username">Nombre de usuario</label>
+      <input
+        type="email"
+        id="username"
+        name="username"
+        placeholder="Ingrese el nombre de usuario..."
+        required
+      />
+    </div>
+    <div class="form--data__input">
+      <label for="password">Contraseña</label>
+      <PasswordInput client:visible />
+    </div>
+    <button type="submit">Iniciar sesión</button>
+  </form>
+</LoginLayout>
+
+<style>
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: regular;
+    font-style: normal;
+    font-variation-settings: "slnt" 0;
+  }
+
+  main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-image: linear-gradient(to right, #007bff 50%, #ffd951 50%);
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 1.5rem;
+
+    max-height: 700px;
+    padding: 3rem;
+    background-color: white;
+    border-radius: 0.5rem;
+  }
+
+  .form--hr {
+    border-color: #ffd951;
+    border-width: 1px;
+    border-style: solid;
+  }
+
+  .form--data__input {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  label {
+    font-size: 18px;
+  }
+
+  input[type="text"],
+  input[type="password"],
+  input[type="email"] {
+    padding: 0.5rem 1.5rem;
+    border: 0px solid transparent;
+    border-bottom: 1.4px solid #ffd951;
+    font-size: 18px;
+  }
+
+  input[type="text"]::placeholder,
+  input[type="password"]::placeholder {
+    color: rgb(114, 114, 114);
+  }
+
+  button {
+    padding: 0.5rem;
+    border: none;
+    border-radius: 0.25rem;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    margin-top: 3rem;
+  }
+</style>

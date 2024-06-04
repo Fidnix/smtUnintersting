@@ -1,0 +1,26 @@
+.form__data--label__input > label {
+    font-size: 1.2rem;
+}
+
+.btn-simular {
+    padding: 0.5rem;
+    border: none;
+    background-color: #ffd951 !important;
+    color: #5a5a5a;
+    cursor: pointer;
+    transition: 0.3s;
+    width: 100%;
+}
+
+.btn-simular:hover {
+    padding: 0.5rem;
+    border: none;
+    background-color: #b99d36 !important;
+    color: #303030;
+}
+
+.large-spinner {
+    width: 100px !important;
+    height: 100px !important;
+    font-size: 24px !important;
+  }
